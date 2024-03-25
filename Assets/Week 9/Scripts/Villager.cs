@@ -12,7 +12,7 @@ public class Villager : MonoBehaviour
     bool isSelected;
     public GameObject highlight;
 
-    Vector2 destination;
+    protected Vector2 destination;
     Vector2 movement;
     float speed = 3;
 

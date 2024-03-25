@@ -6,7 +6,7 @@ public class Chest : MonoBehaviour
 {
     public ChestType type;
     public Animator animator;
-    public enum ChestType { Villager, Merchant, Archer}
+    public enum ChestType { Villager, Merchant, Archer, Thief }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Villager villager;
