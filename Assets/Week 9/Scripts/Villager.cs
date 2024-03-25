@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 public class Villager : MonoBehaviour
 {
     Rigidbody2D rb;
-    Animator animator;
+    protected Animator animator;
 
     bool clickingOnSelf;
-    bool isSelected;
+    protected bool isSelected;
     public GameObject highlight;
 
     protected Vector2 destination;
-    Vector2 movement;
+    protected Vector2 movement;
     float speed = 3;
 
     void Start()

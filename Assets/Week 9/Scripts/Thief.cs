@@ -15,9 +15,18 @@ public class Thief : Villager
 
     public override void Attack()
     {
-        Instantiate(dagger, spawn1);
-        Instantiate(dagger, spawn2);
+        StopAllCoroutines();
+        StartCoroutine(Dash());
+    }
 
+    IEnumerator Dash()
+    {
         destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        yield return new WaitUntil(()=> movement.magnitude < 0.1);
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(1);
+        Instantiate(dagger, spawn1);
+        yield return new WaitForSeconds(1);
+        Instantiate(dagger, spawn2);
     }
 }
