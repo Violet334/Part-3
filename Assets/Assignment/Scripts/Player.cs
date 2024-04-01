@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     private void OnMouseDown()
     {
         clickingOnSelf = true;
-
     }
 
     private void OnMouseUp()
@@ -40,8 +39,18 @@ public class Player : MonoBehaviour
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-
         animator.SetFloat("Walk", movement.magnitude);
+
+        //left click on player: attack
+        if (Input.GetMouseButtonDown(0) && clickingOnSelf)
+        {
+            animator.SetTrigger("Attack");
+        }
+        //right click on player: affection
+        else if (Input.GetMouseButtonDown(1) && clickingOnSelf)
+        {
+            //StartCoroutine(affection());
+        }
     }
     private void FixedUpdate()
     {
