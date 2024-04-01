@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public bool affection;
-    public Animator animator;
+    Animator animator;
 
     bool clickingOnSelf;
     Rigidbody2D rb;
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         //left click on player: attack
         if (Input.GetMouseButtonDown(0) && clickingOnSelf)
         {
-            animator.SetTrigger("Attack");
+            Attack();
         }
         //right click on player: affection
         else if (Input.GetMouseButtonDown(1) && clickingOnSelf)
@@ -73,5 +73,10 @@ public class Player : MonoBehaviour
         }
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
+    }
+
+    void Attack()
+    {
+        animator.SetTrigger("Attack");
     }
 }
