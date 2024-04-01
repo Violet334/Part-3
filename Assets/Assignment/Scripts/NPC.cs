@@ -48,7 +48,7 @@ public class NPC : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    public virtual void Reaction()
+    /*public virtual void Reaction()
     {
         if (affection)
         {
@@ -58,7 +58,7 @@ public class NPC : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
-    }
+    }*/
 
     public IEnumerator Affection()
     {
