@@ -5,6 +5,8 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     Rigidbody2D rb;
+    public GameObject heart;
+    public Transform spawn;
     protected Vector2 destination;
     public Transform altDestination;
     protected Vector2 movement;
@@ -21,7 +23,7 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        animator.SetFloat("Movement", movement.magnitude);
     }
     private void FixedUpdate()
     {
@@ -46,13 +48,21 @@ public class NPC : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    public virtual void Attack()
+    public virtual void Reaction()
     {
-
+        if (affection)
+        {
+            StartCoroutine(Affection());
+        }
+        else if (attacking)
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
-    public virtual void Affection()
+    public IEnumerator Affection()
     {
-
+        Instantiate(heart, spawn);
+        yield return new WaitForSeconds(2);
     }
 }
