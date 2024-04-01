@@ -17,7 +17,7 @@ public class NPC : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         destination = transform.position;
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,21 +48,33 @@ public class NPC : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    /*public virtual void Reaction()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (affection)
+        if (collision.CompareTag("Player"))
         {
-            StartCoroutine(Affection());
+            Reaction();
         }
-        else if (attacking)
-        {
-            animator.SetTrigger("Attack");
-        }
-    }*/
+        
+    }
 
-    public IEnumerator Affection()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Instantiate(heart, spawn);
-        yield return new WaitForSeconds(2);
+        StopAllCoroutines();
+    }
+
+    public virtual void Reaction()
+    {
+        StartCoroutine(Affection());
+    }
+
+    public IEnumerator Affection() 
+    {
+        while(true)
+        {
+            GameObject h = Instantiate(heart, spawn.position, Quaternion.identity);
+            yield return new WaitForSeconds(2);
+            Destroy(h);
+        }
+        
     }
 }

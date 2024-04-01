@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         affection = false;
 
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         destination = transform.position;
     }
     private void OnMouseDown()
@@ -44,12 +44,12 @@ public class Player : MonoBehaviour
         //left click on player: attack
         if (Input.GetMouseButtonDown(0) && clickingOnSelf)
         {
-            Attack();
+            animator.SetTrigger("Attack");
         }
         //right click on player: affection
         else if (Input.GetMouseButtonDown(1) && clickingOnSelf)
         {
-            //StartCoroutine(affection());
+            
         }
     }
     private void FixedUpdate()
@@ -75,8 +75,4 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    void Attack()
-    {
-        animator.SetTrigger("Attack");
-    }
 }
