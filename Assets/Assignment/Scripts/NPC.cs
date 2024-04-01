@@ -72,8 +72,8 @@ public class NPC : MonoBehaviour
         while(true)
         {
             GameObject h = Instantiate(heart, spawn.position, Quaternion.identity);
+            Destroy(h,2);
             yield return new WaitForSeconds(2);
-            Destroy(h);
         }
         
     }

@@ -1,11 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public bool affection;
     Animator animator;
+    public GameObject heart;
+    public Transform spawn;
+    public NPC npc;
 
     bool clickingOnSelf;
     Rigidbody2D rb;
@@ -21,12 +26,12 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         destination = transform.position;
     }
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
         clickingOnSelf = true;
     }
 
-    private void OnMouseUp()
+    private void OnMouseExit()
     {
         clickingOnSelf = false;
     }
@@ -47,9 +52,12 @@ public class Player : MonoBehaviour
             animator.SetTrigger("Attack");
         }
         //right click on player: affection
-        else if (Input.GetMouseButtonDown(1) && clickingOnSelf)
+        if (Input.GetMouseButtonDown(1) && clickingOnSelf)
         {
-            
+            Debug.Log("hear");
+            GameObject h = Instantiate(heart, spawn.position, Quaternion.identity);
+            Destroy(h, 2);
+            StartCoroutine(npc.Affection());
         }
     }
     private void FixedUpdate()
