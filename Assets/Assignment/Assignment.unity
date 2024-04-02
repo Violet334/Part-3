@@ -1874,6 +1874,7 @@ MonoBehaviour:
   affection: 0
   heart: {fileID: 950323906998367674, guid: ab7614e6998e34c488ed6fe06da54252, type: 3}
   spawn: {fileID: 1707964619}
+  npc: {fileID: 707891851}
 --- !u!1 &889060052
 GameObject:
   m_ObjectHideFlags: 0
