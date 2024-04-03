@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    public static bool affection;
+    public static int affection;
 
     Rigidbody2D rb;
     public GameObject heart;
@@ -16,14 +16,14 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        affection = false;
+        affection = 0;
         rb = GetComponent<Rigidbody2D>();
         destination = transform.position;
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         animator.SetFloat("Movement", movement.magnitude);
     }

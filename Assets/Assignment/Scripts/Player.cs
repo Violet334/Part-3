@@ -53,8 +53,12 @@ public class Player : MonoBehaviour
         {
             GameObject h = Instantiate(heart, spawn.position, Quaternion.identity);
             Destroy(h, 2);
-            NPC.affection = true;
+            NPC.affection += 1;
             StartCoroutine(npc.Affection());
+        }
+        else
+        {
+            StopCoroutine(npc.Affection());
         }
     }
     private void FixedUpdate()
