@@ -8,7 +8,6 @@ public class NPC : MonoBehaviour
     public GameObject heart;
     public Transform spawn;
     protected Vector2 destination;
-    public Transform altDestination;
     protected Vector2 movement;
     float speed = 3;
     protected Animator animator;
@@ -76,11 +75,5 @@ public class NPC : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
         
-    }
-
-    public void ChangeDestination()
-    {
-        destination = altDestination.position;
-        Debug.Log("wgfs");
     }
 }

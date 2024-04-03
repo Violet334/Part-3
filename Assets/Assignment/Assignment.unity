@@ -1486,7 +1486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heart: {fileID: 950323906998367674, guid: ab7614e6998e34c488ed6fe06da54252, type: 3}
   spawn: {fileID: 1985385788}
-  altDestination: {fileID: 844464275}
 --- !u!1 &816231341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +2017,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heart: {fileID: 950323906998367674, guid: ab7614e6998e34c488ed6fe06da54252, type: 3}
   spawn: {fileID: 33138549}
-  altDestination: {fileID: 1182438249}
 --- !u!1 &968433167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,7 +2263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heart: {fileID: 0}
   spawn: {fileID: 0}
-  altDestination: {fileID: 166041173}
+  player: {fileID: 845613846}
 --- !u!1 &1150675333
 GameObject:
   m_ObjectHideFlags: 0

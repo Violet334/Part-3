@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Angry : NPC
 {
+    public Player player;
     public override void Reaction()
     {
         Attack();
@@ -12,6 +13,6 @@ public class Angry : NPC
     private void Attack()
     {
         animator.SetTrigger("Attack");
-        SendMessage("TakeDamage");
+        player.SendMessage("TakeDamage");
     }
 }

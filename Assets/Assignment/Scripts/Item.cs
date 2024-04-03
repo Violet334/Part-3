@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SendMessage("ChangeDestination");
+            
         }
     }
 }

@@ -82,5 +82,8 @@ public class Player : MonoBehaviour
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
-
+    void TakeDamage()
+    {
+        animator.SetTrigger("TakeDamage");
+    }
 }
