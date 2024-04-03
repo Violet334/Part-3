@@ -77,4 +77,10 @@ public class NPC : MonoBehaviour
         }
         
     }
+
+    public void ChangeDestination()
+    {
+        destination = altDestination.position;
+        Debug.Log("wgfs");
+    }
 }
