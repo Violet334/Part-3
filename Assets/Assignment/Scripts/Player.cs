@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool affection;
     Animator animator;
     public GameObject heart;
     public Transform spawn;
@@ -20,8 +19,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        affection = false;
-
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         destination = transform.position;
@@ -54,9 +51,9 @@ public class Player : MonoBehaviour
         //right click on player: affection
         if (Input.GetMouseButtonDown(1) && clickingOnSelf)
         {
-            Debug.Log("hear");
             GameObject h = Instantiate(heart, spawn.position, Quaternion.identity);
             Destroy(h, 2);
+            NPC.affection = true;
             StartCoroutine(npc.Affection());
         }
     }

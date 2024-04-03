@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    public static bool affection;
+
     Rigidbody2D rb;
     public GameObject heart;
     public Transform spawn;
@@ -14,6 +16,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        affection = false;
         rb = GetComponent<Rigidbody2D>();
         destination = transform.position;
         animator = GetComponent<Animator>();
@@ -58,7 +61,10 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        StopAllCoroutines();
+        if (collision.CompareTag("Player"))
+        {
+            StopAllCoroutines();
+        }
     }
 
     public virtual void Reaction()
