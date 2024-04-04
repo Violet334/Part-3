@@ -5,16 +5,17 @@ using TMPro;
 
 public class Friendly : NPC
 {
+    //get reference to the text used in the item script
     public TextMeshProUGUI text;
-    public Transform spawn2;
     static void ResetAffection()
     {
-        if (affection == 5)
+        //reset affection meter after 5
+        if (affection > 5)
         {
             affection = 0;
         }
     }
-
+    //add updated text if affection is high enough
     protected override void Update()
     {
         base.Update();

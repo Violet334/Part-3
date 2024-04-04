@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    //new static variable
     public static int affection;
 
     Rigidbody2D rb;
@@ -16,6 +17,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //affection meter starts at 0
         affection = 0;
         rb = GetComponent<Rigidbody2D>();
         destination = transform.position;
@@ -49,7 +51,7 @@ public class NPC : MonoBehaviour
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
-
+    //reaction to player proximity
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -58,7 +60,7 @@ public class NPC : MonoBehaviour
         }
         
     }
-
+    //stop playing the affection coroutine if player exits proximity
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -66,12 +68,12 @@ public class NPC : MonoBehaviour
             StopAllCoroutines();
         }
     }
-
+    //base reaction function is to play the affection coroutine
     public virtual void Reaction()
     {
         StartCoroutine(Affection());
     }
-
+    //periodically creates a heart that disappears after a few seconds above the npc
     public IEnumerator Affection() 
     {
         while(true)

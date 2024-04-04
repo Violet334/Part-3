@@ -6,6 +6,7 @@ public class FriendlyChest : Item
 {
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        //friendly message to the player
         if (collision.CompareTag("Player"))
         {
             text.text = "Aw, you can be here";

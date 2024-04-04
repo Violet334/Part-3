@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //new variables
     Animator animator;
     public GameObject heart;
     public Transform spawn;
@@ -20,9 +21,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         destination = transform.position;
     }
+    //use OnMouseOver/Exit instead OnMouseDown/Up to also store input from right clicking
     private void OnMouseOver()
     {
         clickingOnSelf = true;
@@ -50,14 +52,16 @@ public class Player : MonoBehaviour
         }
         //right click on player: affection
         if (Input.GetMouseButtonDown(1) && clickingOnSelf)
-        {
+        { 
             GameObject h = Instantiate(heart, spawn.position, Quaternion.identity);
             Destroy(h, 2);
+            //increment the affection meter and play the friendly npc's affection
             NPC.affection += 1;
             StartCoroutine(npc.Affection());
         }
         else
         {
+            //stop the coroutine after the player has stopped left clicking
             StopCoroutine(npc.Affection());
         }
     }
@@ -83,6 +87,7 @@ public class Player : MonoBehaviour
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
+    //take damage if hit by npc
     void TakeDamage()
     {
         animator.SetTrigger("TakeDamage");

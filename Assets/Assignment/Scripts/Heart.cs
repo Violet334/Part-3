@@ -10,10 +10,11 @@ public class Heart : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //set speed of the heart
         speed = new Vector2(0, 3);
     }
 
-    // Update is called once per frame
+    // heart continuously moves upwards
     void Update()
     {
         rb.MovePosition(rb.position + speed * Time.deltaTime);
